@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT_DIR / ".env")
+load_dotenv(ROOT_DIR / ".env.local", override=True)
 
 DATA_DIR = ROOT_DIR / "data"
 DB_DIR = ROOT_DIR / "db"
@@ -18,5 +19,6 @@ CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 TOP_K = int(os.getenv("TOP_K", "4"))
 EMBEDDING_DIMENSIONS = int(os.getenv("EMBEDDING_DIMENSIONS", "4096"))
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+_gemini_api_key = os.getenv("GEMINI_API_KEY", "").strip()
+GEMINI_API_KEY = "" if _gemini_api_key.startswith("replace_with_") else _gemini_api_key
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")

@@ -54,6 +54,7 @@ less well than a neural embedding model.
 
 ```text
 Intern_work/
+|-- .env                    # committed dummy defaults only
 |-- .env.example
 |-- .gitignore
 |-- app.py                # Streamlit web interface
@@ -86,8 +87,8 @@ Intern_work/
    ```
 
 4. Create a Gemini API key in Google AI Studio.
-5. Copy `.env.example` to `.env` and replace the placeholder `GEMINI_API_KEY`,
-   or enter the key in the masked Streamlit sidebar field.
+5. Copy `.env.example` to `.env.local` and replace the placeholder
+   `GEMINI_API_KEY`, or enter the key in the masked Streamlit sidebar field.
 6. Put four or five meaningful source documents in `data/` (at least one PDF).
 7. Start the Streamlit application:
 
@@ -127,7 +128,8 @@ Supported settings are:
 | `GEMINI_API_KEY` | none | Google AI Studio API key |
 | `GEMINI_MODEL` | `gemini-2.5-flash` | Gemini generation model |
 
-Never commit `.env`; it is included in `.gitignore`.
+The committed `.env` contains dummy values only. Never place a real key there.
+Store private values in the ignored `.env.local` file.
 
 ## Example queries
 
